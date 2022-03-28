@@ -92,37 +92,37 @@ module.exports = promptsData => {
     const { title, description, installation, usage, license, contributers, tests, githubName, email } = promptsData;
     // TODO: Create a function to generate markdown for README
     return `
-        ${renderLicenseBadge}
-        # ${title}
-        
-        ## ${description}
+    ${renderLicenseBadge}
+    # ${title}
+    
+    ## ${description}
 
-        ## Table of Contents
-        - [Installation](#installation)
-        - [Usage](#usage)
-        - [Screenshot](#screenshot)
-        - [Contributers](#contributers)
-        ${testHandler(tests)}
-        - [Questions](#questions)
-        ${licenseHandler(license[0])}
+    ## Table of Contents
+    - [Installation](#installation)
+    - [Usage](#usage)
+    - [Screenshot](#screenshot)
+    - [Contributers](#contributers)
+    ${testHandler(tests)}
+    - [Questions](#questions)
+    ${licenseHandler(license[0])}
 
-        ## Installation
-        ${installation}
+    ## Installation
+    ${installation}
 
-        ## Usage
-        ${usage}
+    ## Usage
+    ${usage}
 
-        ## Contributers
-        ${contributionHandler(contributers)}
+    ## Contributers
+    ${contributionHandler(contributers)}
 
-        ${testsHandler(tests)}
+    ${testsHandler(tests)}
 
-        ## Questions
-        [${githubName}](https://github.com/${githubName})
-        ${email}
-        Please send all questions to the above email address or to me at my GitHub profile that's linked above
+    ## Questions
+    [${githubName}](https://github.com/${githubName})
+    ${email}
+    Please send all questions to the above email address or to me at my GitHub profile that's linked above
 
-        ## License
-        ${renderLicenseSection(license)}
+    ## License
+    ${renderLicenseSection(license)}
     `;
 };
