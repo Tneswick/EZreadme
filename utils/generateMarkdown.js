@@ -33,7 +33,7 @@ function renderLicenseSection(license) {
     if (license == "None (or other that you will add yourself)") {
         return "";
     } else {
-        return `This project is covered under the ${renderLicenseLink(license)} license guidelines. Please visit the link for more details.`;
+        return `This project is covered under the ${renderLicenseLink(license)} license guidelines.\nPlease visit the link for more details.`;
     }
 }
 
@@ -57,12 +57,12 @@ const contributionHandler = (contributers) => {
     const contribArr = contributers.split(" ");
     const formattedArr = [];
     let finTemp = ""
-        for (let i = 0; i < contribArr.length; i++) {
+    for (let i = 0; i < contribArr.length; i++) {
         const contributer = `- [${contribArr[i]}](https://github.com/${contribArr[i]})\n`;
         formattedArr.push(contributer);
     }
     for (let j = 0; j < formattedArr.length; j++) {
-      finTemp += formattedArr[j]
+        finTemp += formattedArr[j]
     };
     return finTemp
 };
@@ -73,6 +73,7 @@ const testsHandler = (tests) => {
     } else {
         const testsArr = tests.split(" ");
         const formattedArr = [];
+        let finTemp = "";
         for (let i = 0; i < testsArr.length; i++) {
             const tester = `- ${testsArr[i]}\n`;
             formattedArr.push(tester);
@@ -91,7 +92,8 @@ function generateMarkdown(promptsData) {
 ${renderLicenseBadge(license)}
 # ${title}
     
-## ${description}
+## Description\n
+${description}
 
 ## Table of Contents
 - [Installation](#installation)
@@ -109,14 +111,15 @@ ${installation}
 ${usage}
 
 ## Contributers
+- [${githubName}](https://github.com/${githubName}/)
 ${contributionHandler(contributers)}
 
 ${testsHandler(tests)}
 
 ## Questions
-[${githubName}](https://github.com/${githubName})
-${email}
-Please send all questions to the above email address or to me at my GitHub profile that's linked above
+[${githubName}](https://github.com/${githubName}) on GitHub\n
+${email}\n
+Please send all questions to the above email address or to me at my GitHub profile that's linked above.
 
 ## License
 ${renderLicenseSection(license)}
