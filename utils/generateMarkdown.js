@@ -81,7 +81,7 @@ const testsHandler = (tests) => {
         for (let j = 0; j < formattedArr.length; j++) {
             finTemp += formattedArr[j]
         };
-          return ` ## Tests\n ${finTemp}`
+          return `## Tests\n${finTemp}`
     }
 };
 
@@ -98,7 +98,6 @@ ${description}
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [Screenshot](#screenshot)
 - [Contributers](#contributers)
 ${testHandler(tests)}
 - [Questions](#questions)
