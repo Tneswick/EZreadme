@@ -3,7 +3,6 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
 
-// import markdown 
 // TODO: Create an array of questions for user input
 const questions = [
     {
@@ -129,8 +128,8 @@ function init() {
 init()
     .then(projectData => {
         console.log(projectData);
-        // return generateMarkdown(projectData);
+        return generateMarkdown(projectData);
     })
-    // .then(markdownData => {
-    //     return writeToFile(markdownData);
-    // })
+    .then(markdownData => {
+        return writeToFile(markdownData);
+    })
