@@ -1,14 +1,17 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
-const inquirer = require('inquirer')
+const inquirer = require('inquirer');
+const generateMarkdown = require('./utils/generateMarkdown');
+
+// import markdown 
 // TODO: Create an array of questions for user input
 const questions = [
     {
         type: 'input',
-        name: 'name',
+        name: 'title',
         message: 'What is the name of your project?',
-        validate: nameInput => {
-            if (nameInput) {
+        validate: titleInput => {
+            if (titleInput) {
                 return true;
             }
             else {
@@ -77,16 +80,7 @@ const questions = [
     {
         type: 'input',
         name: 'contributers',
-        message: 'Please enter the GitHub usernames of any contributers of this project separated by spaces:',
-        validate: contributersInput => {
-            if (contributersInput) {
-                return true;
-            }
-            else {
-                console.log('You must have at least one contributer (Can be yourself)');
-                return false;
-            }
-        }
+        message: 'Please enter the GitHub usernames of any contributers of this project separated by spaces (other than you):',
     },
     {
         type: 'input',
@@ -110,18 +104,13 @@ const questions = [
     {
         type: 'input',
         name: 'email',
-        message: 'Please provide an email address you would like to receive questions about your project in (Leave this section blank if you do not wish to provide this):',
-    },
-    {
-        type: 'input',
-        name: 'questions',
-        message: 'Please provide instructions on how potential users can ask questions about your project (If you provided an email to the last question, instruct them to email you at the "above email address", as it will be placed above these instructions):',
-        validate: questionsInput => {
-            if (questionsInput) {
+        message: 'Please provide an email address you would like to receive questions about your project in:',
+        validate: emailInput => {
+            if (emailInput) {
                 return true;
             }
             else {
-                console.log('Direction of questions instructions are required');
+                console.log('An email address is required');
                 return false;
             }
         }
@@ -132,7 +121,16 @@ const questions = [
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    return inquirer.prompt(questions)
+}
 
 // Function call to initialize app
-init();
+init()
+    .then(projectData => {
+        console.log(projectData);
+        // return generateMarkdown(projectData);
+    })
+    // .then(markdownData => {
+    //     return writeToFile(markdownData);
+    // })
